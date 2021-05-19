@@ -28,7 +28,7 @@ const menu = 'Selecione uma das opções abaixo:\n' +
 // ========================================= Unidades =========================================
 const menuUnidades = 'Para conhecer melhor, selecione uma das *Unidades* abaixo:\n' + 
                       '*1* - Africanas📍\n' + '*2* - Calhau📍\n' + "*3* - Turu📍\n" +
-                      '*0* - _Para voltar_';
+                      '*MENU* - _Para voltar ao Menu Principal_';
 
 function start(client) {
 
@@ -71,8 +71,6 @@ function start(client) {
         if (mensagem == 'MENU') { // Volta ao Menu Principal
           client.sendText(message.from, menu);
           pilha = [];
-        } else if (mensagem == '0') { // Volta para o Menu Anterior
-          pilha.pop();
         } else if (mensagem == '1') { // Busca Informações sobre a Unidade na Africanas
           client.sendText(message.from, 'A Unidade da Africanas fica localizado📍:');
           client.sendLocation(message.from, '-2.5535677754237622', '-44.274787231438225', 'Unidade Africanas');
@@ -97,6 +95,29 @@ function start(client) {
                                         'Sexta é das 8h às 12h e das 14h as 18h\n' + 
                                         'Segue abaixo telefone para contato.');
           client.sendContactVcard(message.from, '559888265981@c.us', 'Escola Fla Unidade Turu');
+        } else {
+          client.sendText(message.from, msgCNR);
+        }
+      } else if (pilha[pilha.length -1] == '6') { // Informações da Escola do Flamengo
+        client.sendText(message.from, 'E ai, curtiu as nossas unidades?\n' +
+                                      'Isso foi pq você nem sabe que somos uma das maiores redes de franquia de futebol do país🇧🇷.' + 
+                                      'Temos mais de 1.000 unidades espalhadas por todo o Brasil🌎.');
+        client.sendVideo(message.from, '/video', 'introFla.mp4', '');
+        client.sendText(message.from, 'Somos ligadas diretamente com o Clube de Regatas do Flamengo🔴⚫,' +
+                                      ' os nossos alunos  participam de competições oficiais como, Copa Fla Local🏅, Copa Fla Nordeste🏆 e Copa Fla Brasil🇧🇷.' +
+                                      'O nosso principal objetivo é ensinar noções do futebol para meninos👦 e meninas👧 com idades de 04 a 18 anos.\n' +
+                                      ' Apesar de não termos como objetivo a formação profissional dos nossos alunos,' +
+                                      ' a Escola Flamengo disponibiliza ferramentas que ajudam eles nesse sonho.' +
+                                      ' Scout, Mundialitos e as competições oficial🤝 além de indicação direta ao Club são uma dessas ferramentas.\n' +
+                                      'Ah! _E todos os nossos alunos tem por direito um seguro contra acidente que já está incluído nas mensalidades_.' +
+                                      ' Esse seguro cobre despesas médicas👨‍⚕️ em caso de contusão dentro do campo em aula ou jogos que estejam jogando pela escola!\n' +
+                                      '\nE tem muitoooos outros benefícios de ser um aluno Flamengo.\n' + 
+                                      'Veja a Unidade📍 mais próxima e agende sua aula experimental. 😉✌️\n\n' + 
+                                      'Faz teu nome jogador(a)!! ⚽');
+        client.sendText(message.from, 'Digite *MENU* para voltar ao Menu Principal.');
+        if (mensagem == 'MENU') { // Volta ao Menu Principal
+          client.sendText(message.from, menu);
+          pilha = [];
         } else {
           client.sendText(message.from, msgCNR);
         }
