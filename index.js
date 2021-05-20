@@ -17,6 +17,9 @@ const msgSaudacao = 'Olá! Seja bem vindo a Escola Flamengo⚽.\n' +
 
 const msgCNR = 'Desculpa😐!\n❌ Opção inválida!'; // mensagem de Comando Não Reconhecido
 
+const msgSub = 'Para vc que não sabe sobre as categorias🤔, digite *SUB* a qualquer momento.\n' +
+                'Ou *MENU* para voltar ao Menu Principal.';
+
 const menu = 'Selecione uma das opções abaixo:\n' + 
               '*1* - Vantagens de ser Aluno Fla🔴⚫\n' +
               '*2* - Unidades📍\n' +
@@ -88,7 +91,11 @@ function start(client) {
           client.stopTyping(message.from);
           break;
         case '3':
-          // pilha.push('3');
+          client.startTyping(message.from);
+          await delay(2000); // Esperando 2 seg
+          client.sendText(message.from, menuUnidades);
+          pilha.push('3');
+          client.stopTyping(message.from);
           break;
         case '4':
           // pilha.push('4');
@@ -168,6 +175,101 @@ function start(client) {
             client.startTyping(message.from);
             await delay(1000); // Esperando 1 seg
             client.sendContactVcard(message.from, '559888265981@c.us', 'Escola Fla Unidade Turu');
+            client.stopTyping(message.from);
+            break;
+          default:
+            client.startTyping(message.from);
+            await delay(1000); // Esperando 1 seg
+            client.sendText(message.from, msgCNR);
+            client.stopTyping(message.from);
+            break;
+        }
+      } else if (pilha[indice] == '3') { // Menu das unidades
+        switch (mensagem) {
+          case 'MENU': // Volta ao Menu Principal
+            client.startTyping(message.from);
+            await delay(4000); // Esperando 4 seg
+            client.sendText(message.from, menu);
+            client.stopTyping(message.from);
+            pilha.pop();
+            break;
+          case '1': // Busca Informações sobre a Unidade na Africanas
+            client.startTyping(message.from);
+            await delay(4000); // Esperando 4 seg
+            client.sendText(message.from, 'Horários da Africanos📍:\n' +
+                                          '*Segunda* e *Quarta*\n' +
+                                          '_Tarde_ ⛅\n' +
+                                          '```Sub 17 às 15:00h```\n' +
+                                          '```Sub 13 às 16:00h```\n' +
+                                          '```Sub 11 às 17:00h```\n' +
+                                          '\n' +
+                                          '*Terça* e *Quinta*\n' +
+                                          '_Manhã_ ☀️\n' +
+                                          '```Sub 11 às 9:00h```\n' +
+                                          '\n' +
+                                          '_Tarde_ ⛅\n' +
+                                          '```Sub 15 às 15:00h```\n' +
+                                          '```Sub 09 às 16:00h```\n' +
+                                          '```Sub 05 e 09 às 17:00h```');
+            client.startTyping(message.from);
+            await delay(1000); // Esperando 1 seg
+            client.sendText(message.from, msgSub);
+            client.stopTyping(message.from);
+            break;
+          case '2': // Busca Informações sobre a Unidade no Calhau
+            client.startTyping(message.from);
+            await delay(2000); // Esperando 2 seg
+            client.sendText(message.from, 'Horários do Calhau📍:\n' +
+                                          '*Terça* e *Quinta*\n' +
+                                          '_Tarde_ ⛅\n' +
+                                          '```Sub 13 e 11 às 16:00h\n```' +
+                                          '```Sub 09 e 07 às 17:00h\n```' +
+                                          '```Sub 05 às 18:00h```');
+            client.startTyping(message.from);
+            await delay(1000); // Esperando 1 seg
+            client.sendText(message.from, msgSub);
+            client.stopTyping(message.from);
+            break;
+          case '3': // Busca Informações sobre a Unidade no Turu
+            client.startTyping(message.from);
+            await delay(5000); // Esperando 5 seg
+            client.sendText(message.from, 'Horários do Turu📍:\n' +
+                                          '*Segunda* e *Quarta*\n' +
+                                          '_Manhã_ ☀️\n' +
+                                          '```Sub 13 às 8:00h```\n' +
+                                          '```Sub 15 e 17 às 9:00h```\n' +
+                                          '\n' +
+                                          '_Tarde_ ⛅\n' +
+                                          '```Sub 17 às 15:00h```\n' +
+                                          '```Sub 13 às 16:00h```\n' +
+                                          '```Sub 11 às 17:00h```\n' +
+                                          '```Sub 09 às 18:00h```\n' +
+                                          '\n' +
+                                          '*Terça* e *Quinta*\n' +
+                                          '_Manhã_ ☀️\n' +
+                                          '```Sub 09 e 11 às 8:30h```\n' +
+                                          '\n' +
+                                          '_Tarde_ ⛅\n' +
+                                          '```Sub 16 às 15:00h```\n' +
+                                          '```Sub 15 às 16:00h```\n' +
+                                          '```Sub 07 às 17:00h```\n' +
+                                          '```Sub 09 às 18:00h```');
+            client.startTyping(message.from);
+            await delay(1000); // Esperando 1 seg
+            client.sendText(message.from, msgSub);
+            client.stopTyping(message.from);
+            break;
+          case 'SUB':
+            client.startTyping(message.from);
+            await delay(4000); // Esperando 4 seg
+            client.sendText(message.from, 'As *Categorias* são dadas de acordo com a faixa etária do aluno.\n' +
+                                          '```Sub 05 = 4 e 5 anos```\n'+
+                                          '```Sub 07 = 6 e 7 anos```\n' +
+                                          '```Sub 09 = 8 e 9 anos```\n' +
+                                          '```Sub 11 = 10 e 11 anos```\n' +
+                                          '```Sub 13 = 12 e 13 anos```\n' +
+                                          '```Sub 15 = 14 e 15 anos```\n' +
+                                          '```Sub 16 e 17 = 16, 17 e 18 anos.```');
             client.stopTyping(message.from);
             break;
           default:
