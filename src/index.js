@@ -1,6 +1,7 @@
 // Supports ES6
 // import { create, Whatsapp } from 'venom-bot';
 const venom = require('venom-bot');
+
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 venom
@@ -12,7 +13,7 @@ venom
 
 var pilha = [];
 
-const destino = '559884915725@c.us';
+const destino = '559884367826@c.us';
 
 const msgSaudacao = 'Olá! Seja bem vindo a Escola Flamengo⚽.\n' +
                     'Prazer, eu sou seu assistente virtual Fla 🤖. Diga, no que posso lhe ajudar?\n';
@@ -130,21 +131,10 @@ function start(client) {
           await delay(1000); // Esperando 1 seg
           client.sendText(destino, 'Por favor, você poderia nos informar o _Nome Completo_ do *Responsável* pelo aluno?');
           responsavel = responsavel + mensagem;
-          pilha.push('7');
+          pilha.push('6');
           if (pilha[pilha.length - 1] == '7') {
-            client.startTyping(destino);
-            await delay(1000); // Esperando 1 seg
-            client.sendText(destino, 'Agora informe o _Nome Completo_ do *Aluno*:');
-            aluno = aluno + mensagem;
-            pilha.push('8');
-            if (pilha[pilha.length - 1] == '8') {
-              client.startTyping(destino);
-              await delay(1000); // Esperando 1 seg
-              client.sendText(destino, 'E por fim, _Descreva_ o que vc *Solicita*:');
-              descricao = descricao + mensagem;
-              pilha.pop();
-              pilha.pop();
-            }
+            
+            
           }
           client.startTyping(destino);
           await delay(3000); // Esperando 3 seg
@@ -331,22 +321,19 @@ function start(client) {
             break;
         }
       } else if (pilha[indice] == '6') {
-        switch (mensagem) {
-          case '1':
-            break;
-          case '2':
-            break;
-          case '3':
-            break;
-          case 'OK':
-            break;
-          default:
+          client.startTyping(destino);
+          await delay(1000); // Esperando 1 seg
+          client.sendText(destino, 'Agora informe o _Nome Completo_ do *Aluno*:');
+          aluno = aluno + mensagem;
+          pilha.push('1');
+
+          if (pilha[pilha.length - 1] == '1') {
             client.startTyping(destino);
             await delay(1000); // Esperando 1 seg
-            client.sendText(destino, msgCNR);
-            client.stopTyping(destino);
-            break;
-        }
+            client.sendText(destino, 'E por fim, _Descreva_ o que vc *Solicita*:');
+            descricao = descricao + mensagem;
+            
+          }
       }
     }
   });
