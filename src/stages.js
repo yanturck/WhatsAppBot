@@ -23,14 +23,26 @@ var stages = {
       descricao: "Turu",
       obj: require("./stages/2,3"),
     },
-    // 3: {
-    //   descricao: "Horarios",
-    //   obj: require("./stages/2"),
-    // },
-    // 4: {
-    //   descricao: "Mensalidades",
-    //   obj: require("./stages/3"),
-    // },
+    3: {
+      descricao: "Horarios",
+      obj: require("./stages/3"),
+    },
+    3.1: {
+      descricao: "Africanos",
+      obj: require("./stages/3,1"),
+    },
+    3.2: {
+      descricao: "Calhau",
+      obj: require("./stages/3,2"),
+    },
+    3.3: {
+      descricao: "Turu",
+      obj: require("./stages/3,3"),
+    },
+    4: {
+      descricao: "Mensalidades",
+      obj: require("./stages/4"),
+    },
     // 5: {
     //   descricao: "Aula Experimental",
     //   obj: require("./stages/4"),

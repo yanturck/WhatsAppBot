@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "mysql": "^2.18.1",
-    "venom-bot": "^3.0.16"
+    "venom-bot": "^3.0.17"
   }
 }
