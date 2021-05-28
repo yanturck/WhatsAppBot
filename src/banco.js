@@ -6,7 +6,7 @@ var banco = {
         stage: 1,
     },
     '559884367826@c.us': {
-        stage: 0,
+        stage: 2.3,
     }
 }
 
