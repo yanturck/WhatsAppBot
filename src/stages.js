@@ -7,10 +7,22 @@ var stages = {
       descricao: "Vantagens",
       obj: require("./stages/1"),
     },
-    // 2: {
-    //   descricao: "Unidades",
-    //   obj: require("./stages/1"),
-    // },
+    2: {
+      descricao: "Unidades",
+      obj: require("./stages/2"),
+    },
+    2.1: {
+      descricao: "Africanos",
+      obj: require("./stages/2,1"),
+    },
+    2.2: {
+      descricao: "Calhau",
+      obj: require("./stages/2,2"),
+    },
+    2.3: {
+      descricao: "Turu",
+      obj: require("./stages/2,3"),
+    },
     // 3: {
     //   descricao: "Horarios",
     //   obj: require("./stages/2"),
