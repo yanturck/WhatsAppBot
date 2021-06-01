@@ -1,6 +1,7 @@
 const menuG = require('../menus/menuP');
+const banco = require('../banco');
 
-function execute (user, msg, contato) {
+function execute (user, msg) {
     const msgSaudacao = 'Olá! Seja bem vindo a Escola Flamengo⚽.\n' +
                         'Prazer, eu sou seu assistente virtual Fla 🤖. Diga, no que posso lhe ajudar?';
     
@@ -15,6 +16,8 @@ function execute (user, msg, contato) {
 
     const resposta = [msgSaudacao, menu, msgAccMenu];
     const posicao = ['msg', 'msg', 'msg'];
+
+    banco.db[user].stage = 'x';
 
     return [resposta, posicao];
 }

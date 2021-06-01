@@ -27,7 +27,7 @@ function getStage (user) {
 function start (client) {
 
     client.onMessage (async (message) => {
-        var retorno = stages.step[getStage(contato)].obj.execute();
+        var retorno = stages.step[getStage(contato)].obj.execute(contato, message);
         
         var resp = retorno[0];
         var posicao = retorno[1];
