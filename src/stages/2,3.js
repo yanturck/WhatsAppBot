@@ -1,4 +1,4 @@
-function execute () {
+function execute (user, msg) {
     const msg1 = 'A Unidade do Turu fica localizado📍:';
 
     const local = ['-2.508317382720364', '-44.225884631501415', 'Unidade São Luís/Turu'];

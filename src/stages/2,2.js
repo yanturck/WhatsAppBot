@@ -1,4 +1,4 @@
-function execute () {
+function execute (user, msg) {
     const msg1 = 'A Unidade do Calhau fica localizado📍:';
 
     const local = ['-2.4834286584426195', '-44.241763309085215', 'Unidade Calhau'];

@@ -1,4 +1,4 @@
-function execute () {
+function execute (user, msg) {
     const msg1 = 'A Unidade dos Africanos fica localizado📍:';
 
     const local = ['-2.5535677754237622', '-44.274787231438225', 'Unidade Africanos'];

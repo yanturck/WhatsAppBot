@@ -1,6 +1,6 @@
 const menuU = require('../menus/menuU');
 
-function execute () {
+function execute (user, msg) {
     var menu = 'Selecione uma das *Unidades* abaixo:\n';
 
     Object.keys(menuU.menu).forEach((value) => {

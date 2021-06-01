@@ -3,6 +3,14 @@ var stages = {
     descricao: "Descobrindo Próximo Estágio",
     obj: require("./stages/x"),
   },
+  'y': {
+    descricao: "SubMenu de Unidades",
+    obj: require("./stages/y"),
+  },
+  'z': {
+    descricao: "SubMenu de Horarios",
+    obj: require("./stages/z"),
+  },
   0: {
     descricao: "Boas Vidas + Menu",
     obj: require("./stages/0"),
