@@ -17,43 +17,43 @@ var stages = {
   },
   1: {
     descricao: "Vantagens",
-    obj: require("./stages/1"),
+    obj: require("./telas/1"),
   },
   2: {
     descricao: "Unidades",
-    obj: require("./stages/2"),
+    obj: require("./telas/2"),
   },
   2.1: {
     descricao: "Africanos",
-    obj: require("./stages/2,1"),
+    obj: require("./telas/2,1"),
   },
   2.2: {
     descricao: "Calhau",
-    obj: require("./stages/2,2"),
+    obj: require("./telas/2,2"),
   },
   2.3: {
     descricao: "Turu",
-    obj: require("./stages/2,3"),
+    obj: require("./telas/2,3"),
   },
   3: {
     descricao: "Horarios",
-    obj: require("./stages/3"),
+    obj: require("./telas/3"),
   },
   3.1: {
     descricao: "Africanos",
-    obj: require("./stages/3,1"),
+    obj: require("./telas/3,1"),
   },
   3.2: {
     descricao: "Calhau",
-    obj: require("./stages/3,2"),
+    obj: require("./telas/3,2"),
   },
   3.3: {
     descricao: "Turu",
-    obj: require("./stages/3,3"),
+    obj: require("./telas/3,3"),
   },
   4: {
     descricao: "Mensalidades",
-    obj: require("./stages/4"),
+    obj: require("./telas/4"),
   },
   // 5: {
   //   descricao: "Aula Experimental",

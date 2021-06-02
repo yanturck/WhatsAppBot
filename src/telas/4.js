@@ -12,9 +12,11 @@ function execute (user, msg) {
                 '```Matrícula: R$ 145,00.```💰\n' + 
                 '```Mensalidade: valor normal R$ 155,00. Pagando até o vencimento fica R$ 145,00.```💸\n' +
                 '```Convênios/irmãos: R$ 129,00.```👦👦';
+
+    const msgAccMenu = '*MENU* - _Para voltar ao Menu Principal_';
     
-    const resposta = [msg1];
-    const posicao = ['msg'];
+    const resposta = [msg1, msgAccMenu];
+    const posicao = ['msg', 'msg'];
 
     return [resposta, posicao];
 }

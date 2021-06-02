@@ -15,8 +15,10 @@ function execute () {
                 '```Sub 09 às 16:00h```\n' +
                 '```Sub 05 e 09 às 17:00h```';
     
-    const resposta = [msg];
-    const posicao = ['msg'];
+    const msgAccMenu = '*MENU* - _Para voltar ao Menu Principal_';
+
+    const resposta = [msg, msgAccMenu];
+    const posicao = ['msg', 'msg'];
 
     return [resposta, posicao];
 }

@@ -10,8 +10,10 @@ function execute (user, msg) {
 
     const contato = ['559888265981@c.us', 'Escola Fla Unidade Turu'];
 
-    const resposta = [msg1, local, msg2, contato];
-    const posicao = ['msg', 'local', 'msg', 'cont'];
+    const msgAccMenu = '*MENU* - _Para voltar ao Menu Principal_';
+
+    const resposta = [msg1, local, msg2, contato, msgAccMenu];
+    const posicao = ['msg', 'local', 'msg', 'cont', 'msg'];
 
     return [resposta, posicao];
 }

@@ -8,7 +8,15 @@ function execute (user, msg) {
     var menu = '';
 
     if (!menuU.menu[parseInt(msg)] && msg != 'MENU') {
-        return [[msgCNR], ['msg']];
+        var resultUnidades = stages.step[2].obj.execute(user, msg);
+        
+        var menuUnidades = resultUnidades[0];
+        menuUnidades.unshift(msgCNR);
+
+        var posUnidades = resultUnidades[1];
+        posUnidades.unshift('msg');
+
+        return [menuUnidades, posUnidades];
     }
 
     if (msg == 'MENU') {
