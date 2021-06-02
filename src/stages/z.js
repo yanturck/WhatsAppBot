@@ -33,15 +33,28 @@ function execute (user, msg) {
     }
 
     if (msg == '1') {
-        return stages.step[3.1].obj.execute(user, msg);
+        return stages.step[3.1].obj.execute();
     }
 
     if (msg == '2') {
-        return stages.step[3.2].obj.execute(user, msg);
+        return stages.step[3.2].obj.execute();
     }
 
     if (msg == '3') {
-        return stages.step[3.3].obj.execute(user, msg);
+        return stages.step[3.3].obj.execute();
+    }
+
+    if (msg == 'SUB') {
+        var descricaoSub = 'As *Categorias* são dadas de acordo com a faixa etária do aluno.\n' +
+                            '```Sub 05 = 4 e 5 anos```\n'+
+                            '```Sub 07 = 6 e 7 anos```\n' +
+                            '```Sub 09 = 8 e 9 anos```\n' +
+                            '```Sub 11 = 10 e 11 anos```\n' +
+                            '```Sub 13 = 12 e 13 anos```\n' +
+                            '```Sub 15 = 14 e 15 anos```\n' +
+                            '```Sub 16 e 17 = 16, 17 e 18 anos.```';
+
+        return [[descricaoSub], ['nsg']];
     }
 }
 
