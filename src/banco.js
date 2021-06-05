@@ -9,6 +9,9 @@ var banco = {
     },
     '559884367826@c.us': {
         stage: 0,
+        subStage: 0,
+        modoED: false,
+        modoOP: false,
         dados: {
             'nomeResponsavel': '',
             'nomeAluno': '',

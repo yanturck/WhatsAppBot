@@ -1,103 +1,137 @@
 const banco = require('../banco');
+const menuG = require('../menus/menuP');
+
+function resumo (resp, aluno, unidade, des) {
+    return 'Resumo da sua solicitação:\n' +
+            '*1* - Responsável👩👨: ' + '_' + resp + '_' + '\n' +
+            '*2* - Aluno(a)👦👧: ' + '_' + aluno + '_' + '\n' +
+            '*3* - Unidade📍: ' + '_' + unidade + '_' + '\n' +
+            '*4* - Descrição🖊️: ' + '_' + des + '_';
+}
 
 function execute (user, msg) {
-    var resumo = 'Resumo da sua solicitação:\n' +
-                        '*1* - Responsável:' + '_' + banco.db[user].dados['nomeResponsável'] + '_' + '\n' +
-                        '*2* - Aluno(a):' + '_' + banco.db[user].dados['nomeAluno'] + '_' + '\n' +
-                        '*3* - Unidade:' + '_' + banco.db[user].dados['nomeUnidade'] + '_' + '\n' +
-                        '*4* - Descrição:' + '_' + banco.db[user].dados['descricao'] + '_';
+    var msgCNR = 'Desculpa😐!\n❌ Opção inválida!'; // mensagem de Comando Não Reconhecido 
+    var menu = '';
 
-    var confirmacao = 'Caso o sr(a). deseja alterar algum dos tópicos anteriores, _Digite o número correspondente_, ' +
+    var nomeResponsavel = banco.db[user].dados['nomeResponsavel'];
+    var nomeAluno = banco.db[user].dados['nomeAluno'];
+    var nomeUnidade = banco.db[user].dados['nomeUnidade'];
+    var descricao = banco.db[user].dados['descricao'];
+
+    var confirmacao = 'Caso o Sr(a). deseja alterar algum dos tópicos anteriores, _Digite o número correspondente_, ' +
                     'se estiver tudo correto, _Digite *OK*_.';
 
-    var modoED = false;
-    var modoOP = false;
-    var stage = [];
-    console.log(stage);
+    var modoED = banco.db[user].modoED;
+    var modoOP = banco.db[user].modoOP;
+    var stage = banco.db[user].subStage;
 
-    if (stage.length == 0) {
-        banco.db[user].dados['nomeResponsavel'] = msg;
+    if (msg == 'MENU') {
+        menu += 'Selecione uma das opções abaixo:\n';
 
-        if (modoED == false) {
-            var msg1 = 'Agora, informe o nome do *Aluno(a)*:';
-            stage.push(1);
-            return [[msg1], ['msg']];
-        }
-        if (modoED == true) {
-            modoOP = true;
-            return [[resumo, confirmacao], ['msg', 'msg']];
-        }
+        Object.keys(menuG.menu).forEach((value) => {
+            var e = menuG.menu[value];
+            menu += `*${value}* - ${e}`;
+        });
 
-    } 
-    if (stage.length == 1) {
-        banco.db[user].dados['nomeAluno'] = msg;
-
-        if (modoED == false) {
-            var msg2 = 'Nome da *Unidade*:'
-            stage.push(1);
-            return [[msg2], ['msg']];
-        }
-        if (modoED == true) {
-            modoOP = true;
-            return [[resumo, confirmacao], ['msg', 'msg']];
-        }
-
-    }
-    if (stage.length == 2) {
-        banco.db[user].dados['nomeUnidade'] = msg;
-
-        if (modoED == false) {
-            var msg3 = 'Por fim, descreva a sua solicitação:'
-            stage.push(1);
-            return [[msg3], ['msg']];
-        }
-        if (modoED == true) {
-            modoOP = true;
-            return [[resumo, confirmacao], ['msg', 'msg']];
-        }
-
-    }
-    if (stage.length == 3) {
-        banco.db[user].dados['descricao'] = msg;
-
-        if (modoED == false) {
-            modoED = true;
-            modoOP = true;
-            return [[resumo, confirmacao], ['msg', 'msg']];
-        }
-        if (modoED == true) {
-            modoOP = true;
-            return [[resumo, confirmacao], ['msg', 'msg']];
-        }
+        banco.db[user].stage = 'x';
+        return [[menu], ['msg']];
     }
 
-    if (modoED == true && modoOP == true) {
+    if (modoOP == false) {
+        if (stage == 1) {
+            banco.db[user].dados['nomeResponsavel'] = msg;
+            nomeResponsavel = msg;
+
+            if (modoED == false) {
+                var msg1 = 'Agora, informe o nome completo do(a) *Aluno(a)*👦👧:';
+                banco.db[user].subStage = 2;
+                return [[msg1], ['msg']];
+            }
+            if (modoED == true) {
+                banco.db[user].modoOP = true;
+                return [[resumo(nomeResponsavel, nomeAluno, nomeUnidade, descricao), confirmacao], ['msg', 'msg']];
+            }
+
+        } 
+        if (stage == 2) {
+            banco.db[user].dados['nomeAluno'] = msg;
+            nomeAluno = msg;
+
+            if (modoED == false) {
+                var msg2 = 'Nome da *Unidade*📍:'
+                banco.db[user].subStage = 3;
+                return [[msg2], ['msg']];
+            }
+            if (modoED == true) {
+                banco.db[user].modoOP = true;
+                return [[resumo(nomeResponsavel, nomeAluno, nomeUnidade, descricao), confirmacao], ['msg', 'msg']];
+            }
+
+        }
+        if (stage == 3) {
+            if (msg != 'AFRICANOS' && msg != 'CALHAU' && msg != 'TURU') {
+                return [['Digite uma *Unidade*📍 valida!🙇‍♂️\n' +
+                        'Como _Africanos_, _Calhau_ ou _Turu_.'],['msg']];
+            }
+            
+            banco.db[user].dados['nomeUnidade'] = msg;
+            nomeUnidade = msg;
+
+            if (modoED == false) {
+                var msg3 = 'Por fim, descreva a sua solicitação🖊️:'
+                banco.db[user].subStage = 4;
+                return [[msg3], ['msg']];
+            }
+            if (modoED == true) {
+                banco.db[user].modoOP = true;
+                return [[resumo(nomeResponsavel, nomeAluno, nomeUnidade, descricao), confirmacao], ['msg', 'msg']];
+            }
+
+        }
+        if (stage == 4) {
+            banco.db[user].dados['descricao'] = msg;
+            descricao = msg;
+
+            if (modoED == false) {
+                banco.db[user].modoED = true;
+                banco.db[user].modoOP = true;
+                return [[resumo(nomeResponsavel, nomeAluno, nomeUnidade, descricao), confirmacao], ['msg', 'msg']];
+            }
+            if (modoED == true) {
+                banco.db[user].modoOP = true;
+                return [[resumo(nomeResponsavel, nomeAluno, nomeUnidade, descricao), confirmacao], ['msg', 'msg']];
+            }
+        }
+    }
+
+    if (modoOP == true) {
         if (msg == '1') {
-            modoOP = false;
-            stage = [];
-            return [['Digite o nome do *Responsável*:'], ['msg']];
+            banco.db[user].modoOP = false;
+            banco.db[user].subStage = 1;
+            return [['Digite o nome completo do(a) *Responsável*👩👨:'], ['msg']];
         }
         if (msg == '2') {
-            modoOP = false;
-            stage = [1];
-            return [['Digite o nome do *Responsável*:'], ['msg']];
+            banco.db[user].modoOP = false;
+            banco.db[user].subStage = 2;
+            return [['Digite o nome completo do(a) *Aluno(a)*👦👧:'], ['msg']];
         }
         if (msg == '3') {
-            modoOP = false;
-            stage = [1, 1];
-            return [['Digite o nome do *Unidade*:'], ['msg']];
+            banco.db[user].modoOP = false;
+            banco.db[user].subStage = 3;
+            return [['Digite o nome do *Unidade*📍:'], ['msg']];
         }
         if (msg == '4') {
-            modoOP = false;
-            stage = [1, 1, 1];
-            return [['Descreva sua solicitação:'], ['msg']];
+            banco.db[user].modoOP = false;
+            banco.db[user].subStage = 4;
+            return [['Descreva sua solicitação🖊️:'], ['msg']];
         }
         if (msg == 'OK' || msg == '0K.' || msg == '0K!') {
-            modoED = false;
-            modoOP = false;
+            banco.db[user].modoED = false;
+            banco.db[user].modoOP = false;
             banco.db[user].stage = 'x';
             return [['OK! Sua solicitação foi realizada, agora aguarde um dos nossos funcionários entrar em contato com Sr(a).🥰'], ['msg']];
         }
+        return [[msgCNR], ['msg']];
     }
 }
 

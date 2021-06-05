@@ -5,6 +5,7 @@ const stages = require('../stages');
 function execute (user, msg) {
     var msgCNR = 'Desculpa😐!\n❌ Opção inválida!'; // mensagem de Comando Não Reconhecido 
     var menu = '';
+    const msgAccMenu = 'Para acessar o menu principal digite *MENU* a qualquer momento!💡';
 
     if (!menuG.menu[parseInt(msg)] && msg != 'MENU') {
         return [[msgCNR], ['msg']];
@@ -40,9 +41,10 @@ function execute (user, msg) {
     }
 
     if (msg == '6') {
-        var msg1 = 'Para eu poder lhe ajudar, primeiro informe o nome do *Responsável* do aluno:';
+        var msg1 = 'Para eu poder lhe ajudar, primeiro informe o nome completo do(a) *Responsável*👩👨 do aluno:';
         banco.db[user].stage = 'B';
-        return [[msg1], ['msg']];
+        banco.db[user].subStage = 1;
+        return [[msgAccMenu, msg1], ['msg', 'msg']];
     }
 }
 

@@ -11,7 +11,7 @@ var stages = {
     descricao: "SubMenu de Horarios",
     obj: require("./stages/z"),
   },
-  'B': {
+  B: {
     descricao: "Nome do responsável",
     obj: require("./stages/B"),
   },
