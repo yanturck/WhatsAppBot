@@ -38,6 +38,12 @@ function execute (user, msg) {
     if (msg == '4') {
         return stages.step[4].obj.execute(user, msg);
     }
+
+    if (msg == '6') {
+        var msg1 = 'Para eu poder lhe ajudar, primeiro informe o nome do *Responsável* do aluno:';
+        banco.db[user].stage = 'B';
+        return [[msg1], ['msg']];
+    }
 }
 
 exports.execute = execute;
