@@ -4,7 +4,7 @@ const stages = require('./stages');
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-const contato = '559884367826@c.us';
+const contato = '559885339469@c.us';
 
 venom
   .create()

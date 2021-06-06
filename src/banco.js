@@ -7,7 +7,7 @@ var banco = {
         stage: 1,
         dados: {}
     },
-    '559884367826@c.us': {
+    '559885339469@c.us': {
         stage: 0,
         subStage: 0,
         modoED: false,

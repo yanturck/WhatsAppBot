@@ -7,7 +7,16 @@ function execute (user, msg) {
     var msgCNR = 'Desculpa😐!\n❌ Opção inválida!'; // mensagem de Comando Não Reconhecido 
     var menu = '';
 
-    if (!menuU.menu[parseInt(msg)] && msg != 'MENU') {
+    var descricaoSub = 'As *Categorias* são dadas de acordo com a faixa etária do aluno.\n' +
+                        '```Sub 05 = 4 e 5 anos```\n'+
+                        '```Sub 07 = 6 e 7 anos```\n' +
+                        '```Sub 09 = 8 e 9 anos```\n' +
+                        '```Sub 11 = 10 e 11 anos```\n' +
+                        '```Sub 13 = 12 e 13 anos```\n' +
+                        '```Sub 15 = 14 e 15 anos```\n' +
+                        '```Sub 16 e 17 = 16, 17 e 18 anos.```';
+
+    if (!menuU.menu[parseInt(msg)] && msg != 'MENU' && msg != 'SUB') {
         var resultUnidades = stages.step[2].obj.execute(user, msg);
         
         var menuUnidades = resultUnidades[0];
@@ -45,16 +54,7 @@ function execute (user, msg) {
     }
 
     if (msg == 'SUB') {
-        var descricaoSub = 'As *Categorias* são dadas de acordo com a faixa etária do aluno.\n' +
-                            '```Sub 05 = 4 e 5 anos```\n'+
-                            '```Sub 07 = 6 e 7 anos```\n' +
-                            '```Sub 09 = 8 e 9 anos```\n' +
-                            '```Sub 11 = 10 e 11 anos```\n' +
-                            '```Sub 13 = 12 e 13 anos```\n' +
-                            '```Sub 15 = 14 e 15 anos```\n' +
-                            '```Sub 16 e 17 = 16, 17 e 18 anos.```';
-
-        return [[descricaoSub], ['nsg']];
+        return [[descricaoSub], ['msg']];
     }
 }
 
