@@ -40,8 +40,15 @@ function execute (user, msg) {
         return stages.step[4].obj.execute(user, msg);
     }
 
+    if (msg == '5') {
+        var msg1 = 'Para poder registrar a aula experimental, primeiro o Sr(a). deve informe o nome completo do(a) *Responsável*👩👨 pelo aluno:';
+        banco.db[user].stage = 'A';
+        banco.db[user].subStage = 1;
+        return [[msgAccMenu, msg1], ['msg', 'msg']];
+    }
+
     if (msg == '6') {
-        var msg1 = 'Para eu poder lhe ajudar, primeiro informe o nome completo do(a) *Responsável*👩👨 do aluno:';
+        var msg1 = 'Para eu poder lhe ajudar, primeiro informe o nome completo do(a) *Responsável*👩👨 pelo aluno:';
         banco.db[user].stage = 'B';
         banco.db[user].subStage = 1;
         return [[msgAccMenu, msg1], ['msg', 'msg']];
